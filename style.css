@@ -5,6 +5,7 @@
   --line: #e2d8cb;
   --accent: #b5532f;
   --card: #fbf7f1;
+  --cursor: #a8501f;
   --sans: "Inter Tight", system-ui, -apple-system, sans-serif;
   --serif: "Instrument Serif", Georgia, serif;
 }
@@ -17,6 +18,7 @@
     --line: #342e29;
     --accent: #e08a62;
     --card: #24201c;
+    --cursor: #c4693a;
   }
 }
 
@@ -193,6 +195,118 @@ main { padding: 0 clamp(16px, 5vw, 64px); max-width: 1200px; margin: 0 auto; }
 }
 .pill:hover { background: var(--ink); color: var(--bg); }
 
+/* My why */
+.why {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+.why em { font-size: 1em; }
+
+.whw {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 24px 0;
+  margin-bottom: 32px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.whw dt {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.whw dd { color: var(--muted); font-size: 16px; line-height: 1.5; }
+
+/* Through line: one continuous thread with a dot per chapter */
+.thread { list-style: none; position: relative; padding-left: 32px; }
+.thread::before {
+  content: "";
+  position: absolute;
+  left: 5px; top: 10px; bottom: 10px;
+  width: 1px;
+  background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 25%, transparent));
+}
+.thread li { position: relative; padding-bottom: 28px; }
+.thread li:last-child { padding-bottom: 0; }
+.thread li::before {
+  content: "";
+  position: absolute;
+  left: -32px; top: 8px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--accent);
+}
+.thread h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.thread p { color: var(--muted); }
+.coda {
+  margin-top: 40px;
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.4vw, 28px);
+  line-height: 1.3;
+}
+.coda em { font-size: 1em; }
+
+/* How I think */
+.cards { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cards li {
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.tag {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.cards p { color: var(--muted); line-height: 1.5; }
+
+/* Beyond work */
+.list.plain li { grid-template-columns: 1fr; }
+
+/* Cursor: a small dot with a soft trailing ring (mouse/trackpad only) */
+.cursor-dot, .cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 100;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.cursor-dot {
+  width: 6px; height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--cursor);
+}
+.cursor-ring {
+  width: 30px; height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1px solid color-mix(in srgb, var(--cursor) 45%, transparent);
+  transition: opacity .3s, width .25s, height .25s, margin .25s, background-color .25s, border-color .25s;
+}
+.cursor-on .cursor-dot, .cursor-on .cursor-ring { opacity: 1; }
+.cursor-hover .cursor-ring {
+  width: 52px; height: 52px;
+  margin: -26px 0 0 -26px;
+  background: color-mix(in srgb, var(--cursor) 12%, transparent);
+  border-color: transparent;
+}
+@media (hover: hover) and (pointer: fine) {
+  .has-cursor, .has-cursor a, .has-cursor button { cursor: none; }
+}
+
 /* Footer */
 .footer {
   display: flex;
@@ -215,6 +329,8 @@ main { padding: 0 clamp(16px, 5vw, 64px); max-width: 1200px; margin: 0 auto; }
   .name-row { display: contents; }
   .portrait { order: -1; width: 240px; margin-bottom: 40px; }
   .name-row h1 { margin: 8px 0 40px; }
+  .cards { grid-template-columns: 1fr; }
+  .whw { grid-template-columns: 1fr; gap: 16px; }
   .stats { grid-template-columns: 1fr 1fr; gap: 28px 20px; padding: 40px 0 56px; }
   .list li { grid-template-columns: 1fr; gap: 4px; }
   .links a { padding: 22px 56px 22px 22px; }
