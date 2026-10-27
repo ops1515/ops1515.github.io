@@ -196,31 +196,5 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <div class="cursor-ring" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <script>
-    // Minimal custom cursor: only for mouse/trackpad users, off for reduced motion.
-    (function () {
-      if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-      var root = document.documentElement, body = document.body;
-      var dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
-      var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var x = -100, y = -100, rx = x, ry = y;
-      root.classList.add('has-cursor');
-      addEventListener('mousemove', function (e) {
-        x = e.clientX; y = e.clientY;
-        dot.style.transform = 'translate(' + x + 'px,' + y + 'px)';
-        body.classList.add('cursor-on');
-        body.classList.toggle('cursor-hover', !!e.target.closest('a, button'));
-      });
-      document.addEventListener('mouseleave', function () { body.classList.remove('cursor-on'); });
-      (function loop() {
-        rx += (x - rx) * (still ? 1 : 0.18);
-        ry += (y - ry) * (still ? 1 : 0.18);
-        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-        requestAnimationFrame(loop);
-      })();
-    })();
-  </script>
 </body>
 </html>
