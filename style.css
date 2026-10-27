@@ -280,11 +280,27 @@ main { padding: 0 clamp(16px, 5vw, 64px); max-width: 1200px; margin: 0 auto; }
 
 /* Cursor: a soft, rounded arrowhead in burnt orange; it turns dark over
    orange text so the point is always visible. */
-html, a, button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 3.5 L21.5 10.6 Q22.6 11.1 21.5 11.6 L14.4 14.4 L11.6 21.5 Q11.1 22.6 10.6 21.5 Z' fill='%23a8501f' stroke='%23fbf7f1' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 4, auto; }
-:is(em, .tag, .whw dt, .stats strong, .arrow), :is(em, .tag, .whw dt, .stats strong, .arrow) * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 3.5 L21.5 10.6 Q22.6 11.1 21.5 11.6 L14.4 14.4 L11.6 21.5 Q11.1 22.6 10.6 21.5 Z' fill='%231f1a17' stroke='%23fbf7f1' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 4, auto; }
+html, a, button {
+  cursor: url(images/cursor-orange.png) 4 4, auto;
+  cursor: -webkit-image-set(url(images/cursor-orange.png) 1x, url(images/cursor-orange@2x.png) 2x) 4 4, auto;
+  cursor: image-set(url(images/cursor-orange.png) 1x, url(images/cursor-orange@2x.png) 2x) 4 4, auto;
+}
+:is(em, .tag, .whw dt, .stats strong, .arrow), :is(em, .tag, .whw dt, .stats strong, .arrow) * {
+  cursor: url(images/cursor-dark.png) 4 4, auto;
+  cursor: -webkit-image-set(url(images/cursor-dark.png) 1x, url(images/cursor-dark@2x.png) 2x) 4 4, auto;
+  cursor: image-set(url(images/cursor-dark.png) 1x, url(images/cursor-dark@2x.png) 2x) 4 4, auto;
+}
 @media (prefers-color-scheme: dark) {
-  html, a, button { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 3.5 L21.5 10.6 Q22.6 11.1 21.5 11.6 L14.4 14.4 L11.6 21.5 Q11.1 22.6 10.6 21.5 Z' fill='%23c4693a' stroke='%231c1916' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 4, auto; }
-  :is(em, .tag, .whw dt, .stats strong, .arrow), :is(em, .tag, .whw dt, .stats strong, .arrow) * { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cpath d='M4 3.5 L21.5 10.6 Q22.6 11.1 21.5 11.6 L14.4 14.4 L11.6 21.5 Q11.1 22.6 10.6 21.5 Z' fill='%23f1e9df' stroke='%231c1916' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E") 4 4, auto; }
+  html, a, button {
+    cursor: url(images/cursor-orange-dm.png) 4 4, auto;
+    cursor: -webkit-image-set(url(images/cursor-orange-dm.png) 1x, url(images/cursor-orange-dm@2x.png) 2x) 4 4, auto;
+    cursor: image-set(url(images/cursor-orange-dm.png) 1x, url(images/cursor-orange-dm@2x.png) 2x) 4 4, auto;
+  }
+  :is(em, .tag, .whw dt, .stats strong, .arrow), :is(em, .tag, .whw dt, .stats strong, .arrow) * {
+    cursor: url(images/cursor-light-dm.png) 4 4, auto;
+    cursor: -webkit-image-set(url(images/cursor-light-dm.png) 1x, url(images/cursor-light-dm@2x.png) 2x) 4 4, auto;
+    cursor: image-set(url(images/cursor-light-dm.png) 1x, url(images/cursor-light-dm@2x.png) 2x) 4 4, auto;
+  }
 }
 
 /* Footer */
